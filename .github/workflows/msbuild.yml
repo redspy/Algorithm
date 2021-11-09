@@ -4,7 +4,7 @@ on: [push]
 
 env:
   # Path to the solution file relative to the root of the project.
-  SOLUTION_FILE_PATH: ./Algorithm
+  SOLUTION_FILE_PATH: ./AlgorithmTest/AlgorithmTest.sln
 
   # Configuration type to build.
   # You can convert this to a build matrix if you need coverage of multiple configuration types.
@@ -16,6 +16,8 @@ jobs:
     runs-on: windows-latest
 
     steps:
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.2    
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
